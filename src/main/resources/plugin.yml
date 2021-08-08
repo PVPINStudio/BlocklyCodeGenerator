@@ -3,3 +3,4 @@ main: com.pvpin.blockly.Main
 version: 1.0.0
 depend:
   - PVPINCore
+api-version: 1.13
