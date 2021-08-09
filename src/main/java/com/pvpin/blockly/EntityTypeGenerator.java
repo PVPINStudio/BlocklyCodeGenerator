@@ -2,7 +2,6 @@ package com.pvpin.blockly;
 
 import com.pvpin.pvpincore.api.PVPINLogManager;
 import com.pvpin.pvpincore.api.PVPINTranslation;
-import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 
 import java.io.File;

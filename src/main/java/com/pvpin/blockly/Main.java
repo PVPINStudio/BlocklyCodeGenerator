@@ -14,6 +14,7 @@ public class Main extends JavaPlugin {
             this.getDataFolder().mkdirs();
             Class.forName(EntityTypeGenerator.class.getName());
             Class.forName(MaterialGenerator.class.getName());
+            Class.forName(ParticleGenerator.class.getName());
             Class.forName(SoundGenerator.class.getName());
         } catch (ClassNotFoundException ex) {
             PVPINLogManager.log(ex);

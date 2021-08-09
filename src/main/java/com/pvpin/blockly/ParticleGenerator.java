@@ -1,8 +1,7 @@
 package com.pvpin.blockly;
 
 import com.pvpin.pvpincore.api.PVPINLogManager;
-import com.pvpin.pvpincore.api.PVPINTranslation;
-import org.bukkit.Sound;
+import org.bukkit.Particle;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -13,20 +12,20 @@ import java.util.Iterator;
 /**
  * @author William_Shi
  */
-public class SoundGenerator {
+public class ParticleGenerator {
     static {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
-        Iterator<Sound> it = Arrays.stream(Sound.values()).iterator();
+        Iterator<Particle> it = Arrays.stream(Particle.values()).iterator();
         while (it.hasNext()) {
-            Sound sound = it.next();
+            Particle particle = it.next();
             sb.append("[");
             sb.append("\"");
-            sb.append(PVPINTranslation.getLocalizedName("zh_cn", sound) == null ? sound.toString() : PVPINTranslation.getLocalizedName("zh_cn", sound));
+            sb.append(particle.toString());
             sb.append("\"");
             sb.append(", ");
             sb.append("\"");
-            sb.append(sound.toString());
+            sb.append(particle.toString());
             sb.append("\"");
             sb.append("]");
             if (it.hasNext()) {
@@ -34,7 +33,7 @@ public class SoundGenerator {
             }
         }
         sb.append("]");
-        File file = new File(Main.getProvidingPlugin(Main.class).getDataFolder(), "Sound.txt");
+        File file = new File(Main.getProvidingPlugin(Main.class).getDataFolder(), "Particle.txt");
         if (!file.exists()) {
             try {
                 file.createNewFile();
