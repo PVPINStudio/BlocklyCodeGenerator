@@ -12,6 +12,7 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         try {
             this.getDataFolder().mkdirs();
+            Class.forName(ConnectionChecker.class.getName());
             Class.forName(EnchantmentGenerator.class.getName());
             Class.forName(EntityTypeGenerator.class.getName());
             Class.forName(MaterialGenerator.class.getName());
