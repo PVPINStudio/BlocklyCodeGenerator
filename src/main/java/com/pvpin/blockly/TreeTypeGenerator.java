@@ -1,7 +1,6 @@
 package com.pvpin.blockly;
 
 import com.pvpin.pvpincore.api.PVPINLogManager;
-import com.pvpin.pvpincore.api.PVPINTranslation;
 import org.bukkit.TreeType;
 
 import java.io.File;

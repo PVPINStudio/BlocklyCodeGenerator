@@ -1,7 +1,7 @@
 package com.pvpin.blockly;
 
 import com.pvpin.pvpincore.api.PVPINLogManager;
-import com.pvpin.pvpincore.api.PVPINTranslation;
+import com.pvpin.translation.PVPINTranslation;
 import org.bukkit.enchantments.Enchantment;
 
 import java.io.File;
