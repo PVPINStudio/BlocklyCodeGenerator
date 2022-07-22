@@ -24,11 +24,6 @@ package com.pvpin.translation;
 
 import com.pvpin.pvpincore.modules.boot.PVPINLoadOnEnable;
 import com.pvpin.pvpincore.impl.nms.entity.EntityNMSUtils;
-
-import static com.pvpin.translation.TranslationManager.*;
-import static com.pvpin.pvpincore.impl.nms.VersionChecker.version;
-
-import com.pvpin.pvpincore.api.PVPINLogManager;
 import com.pvpin.pvpincore.impl.nms.VersionChecker;
 import net.md_5.bungee.api.chat.TranslatableComponent;
 import org.bukkit.entity.EntityType;
@@ -39,6 +34,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.Arrays;
 
+import static com.pvpin.translation.TranslationManager.*;
+import static com.pvpin.pvpincore.impl.nms.VersionChecker.version;
 /**
  * @author William_Shi
  */
@@ -86,7 +83,6 @@ public class TranslationEntityType {
 /**
  * @author William_Shi
  */
-@PVPINLoadOnEnable
 class EntityTypeTranslationNMSUtils extends EntityNMSUtils {
 
     protected static Class<?> nmsRegistryBlocks;
@@ -110,7 +106,7 @@ class EntityTypeTranslationNMSUtils extends EntityNMSUtils {
                                     try {
                                         nmsIRegistry_EntityTypes = action.get(null);
                                     } catch (IllegalAccessException ex) {
-                                        PVPINLogManager.log(ex);
+                                        ex.printStackTrace();
                                     }
                                 }
                             }
@@ -119,7 +115,7 @@ class EntityTypeTranslationNMSUtils extends EntityNMSUtils {
             );
         } catch (ClassNotFoundException
                 | NoSuchMethodException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
     }
 
@@ -139,7 +135,7 @@ class EntityTypeTranslationNMSUtils extends EntityNMSUtils {
                 | InvocationTargetException
                 | InstantiationException
                 | IllegalAccessException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
         return ret;
     }

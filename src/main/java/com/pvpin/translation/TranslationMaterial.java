@@ -26,9 +26,6 @@ import com.pvpin.pvpincore.modules.boot.PVPINLoadOnEnable;
 import com.pvpin.pvpincore.impl.nms.block.BlockNMSUtils;
 import com.pvpin.pvpincore.impl.nms.itemstack.ItemStackNMSUtils;
 
-import static com.pvpin.translation.TranslationManager.*;
-
-import com.pvpin.pvpincore.api.PVPINLogManager;
 import com.pvpin.pvpincore.impl.nms.VersionChecker;
 import net.md_5.bungee.api.chat.TranslatableComponent;
 import org.bukkit.Bukkit;
@@ -39,6 +36,8 @@ import org.bukkit.inventory.ItemStack;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Random;
+
+import static com.pvpin.translation.TranslationManager.*;
 
 /**
  * @author William_Shi
@@ -97,7 +96,6 @@ public class TranslationMaterial {
 /**
  * @author William_Shi
  */
-@PVPINLoadOnEnable
 class ItemStackTranslationNMSUtils extends ItemStackNMSUtils {
 
     protected static Method nmsItem_getName;
@@ -106,7 +104,7 @@ class ItemStackTranslationNMSUtils extends ItemStackNMSUtils {
         try {
             nmsItem_getName = nmsItem.getMethod("getName");
         } catch (Exception ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
     }
 
@@ -124,7 +122,7 @@ class ItemStackTranslationNMSUtils extends ItemStackNMSUtils {
                 | IllegalAccessException
                 | IllegalArgumentException
                 | InvocationTargetException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
         return "";
     }
@@ -134,7 +132,6 @@ class ItemStackTranslationNMSUtils extends ItemStackNMSUtils {
 /**
  * @author William_Shi
  */
-@PVPINLoadOnEnable
 class BlockTranslationNMSUtils extends BlockNMSUtils {
     protected static Method nmsBlock_getName;
     protected static final Random ran;

@@ -22,7 +22,6 @@
  */
 package com.pvpin.translation;
 
-import com.pvpin.pvpincore.api.PVPINLogManager;
 import com.pvpin.pvpincore.impl.nms.NMSUtils;
 import com.pvpin.pvpincore.modules.boot.PVPINLoadOnEnable;
 import com.pvpin.pvpincore.impl.nms.VersionChecker;
@@ -83,7 +82,6 @@ public class TranslationEnchantment {
 /**
  * @author William_Shi
  */
-@PVPINLoadOnEnable
 class EnchantmentTranslationNMSUtils extends NMSUtils {
 
     protected static Class<?> nmsEnchantment;
@@ -107,7 +105,7 @@ class EnchantmentTranslationNMSUtils extends NMSUtils {
                                     try {
                                         nmsIRegistry_Enchantment = action.get(null);
                                     } catch (IllegalAccessException ex) {
-                                        PVPINLogManager.log(ex);
+                                        ex.printStackTrace();
                                     }
                                 }
                             }
@@ -117,7 +115,7 @@ class EnchantmentTranslationNMSUtils extends NMSUtils {
         } catch (ClassNotFoundException
                 | NoSuchMethodException
                 | SecurityException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
     }
 
@@ -130,7 +128,7 @@ class EnchantmentTranslationNMSUtils extends NMSUtils {
         } catch (IllegalAccessException
                 | IllegalArgumentException
                 | InvocationTargetException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
         return ret;
     }

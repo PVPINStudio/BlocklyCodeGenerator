@@ -22,8 +22,14 @@
  */
 package com.pvpin.translation;
 
+import com.pvpin.pvpincore.impl.nms.VersionChecker;
+import com.pvpin.translation.v1_17.Ench_17;
+import com.pvpin.translation.v1_17.Entity_17;
+import com.pvpin.translation.v1_17.Material_17;
+import com.pvpin.translation.v1_17.Potion_17;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.block.Biome;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -47,7 +53,10 @@ public class PVPINTranslation {
      * @param mat    material to be translated
      * @return the official translation of the material
      */
-    public static String getLocalizedName(String locale, Material mat) {
+    public static String getLocalizedName(String locale, Material mat) throws Exception {
+        if (VersionChecker.isCurrentHigherOrEquals("v1_17")) {
+            return Material_17.getLocalizedName(locale, mat);
+        }
         return TranslationMaterial.getLocalizedName(locale, mat);
     }
 
@@ -58,7 +67,7 @@ public class PVPINTranslation {
      * @param mat    material to be translated
      * @return the official translation of the material
      */
-    public static String getLocalizedName(Player player, Material mat) {
+    public static String getLocalizedName(Player player, Material mat) throws Exception {
         return getLocalizedName(player.getLocale(), mat);
     }
 
@@ -69,7 +78,10 @@ public class PVPINTranslation {
      * @param ench   enchantment to be translated
      * @return the official translation of the enchantment
      */
-    public static String getLocalizedName(String locale, Enchantment ench) {
+    public static String getLocalizedName(String locale, Enchantment ench) throws Exception {
+        if (VersionChecker.isCurrentHigherOrEquals("v1_17")) {
+            return Ench_17.getLocalizedName(locale, ench);
+        }
         return TranslationEnchantment.getLocalizedName(locale, ench);
     }
 
@@ -80,7 +92,7 @@ public class PVPINTranslation {
      * @param ench   enchantment to be translated
      * @return the official translation of the enchantment
      */
-    public static String getLocalizedName(Player player, Enchantment ench) {
+    public static String getLocalizedName(Player player, Enchantment ench) throws Exception {
         return getLocalizedName(player.getLocale(), ench);
     }
 
@@ -92,6 +104,9 @@ public class PVPINTranslation {
      * @return the official translation of the entity type
      */
     public static String getLocalizedName(String locale, EntityType type) {
+        if (VersionChecker.isCurrentHigherOrEquals("v1_17")) {
+            return Entity_17.getLocalizedName(locale, type);
+        }
         return TranslationEntityType.getLocalizedName(locale, type);
     }
 
@@ -113,7 +128,10 @@ public class PVPINTranslation {
      * @param type   potion effect type to be translated
      * @return the official translation of the  potion effect type
      */
-    public static String getLocalizedName(String locale, PotionEffectType type) {
+    public static String getLocalizedName(String locale, PotionEffectType type) throws Exception {
+        if (VersionChecker.isCurrentHigherOrEquals("v1_17")) {
+            return Potion_17.getLocalizedName(locale, type);
+        }
         return TranslationPotionEffectType.getLocalizedName(locale, type);
     }
 
@@ -124,7 +142,7 @@ public class PVPINTranslation {
      * @param type   potion effect type to be translated
      * @return the official translation of the  potion effect type
      */
-    public static String getLocalizedName(Player player, PotionEffectType type) {
+    public static String getLocalizedName(Player player, PotionEffectType type) throws Exception {
         return getLocalizedName(player.getLocale(), type);
     }
 
@@ -148,6 +166,28 @@ public class PVPINTranslation {
      */
     public static String getLocalizedName(Player player, Sound sound) {
         return getLocalizedName(player.getLocale(), sound);
+    }
+
+    /**
+     * This method is used to get potion effect type translations.
+     *
+     * @param locale target locale
+     * @param biome  biome type to be translated
+     * @return the official translation of the  potion effect type
+     */
+    public static String getLocalizedName(String locale, Biome biome) {
+        return TranslationBiome.getLocalizedName(locale, biome);
+    }
+
+    /**
+     * This method is used to get potion effect type translations.
+     *
+     * @param player target locale (of the player)
+     * @param biome  biome type to be translated
+     * @return the official translation of the  potion effect type
+     */
+    public static String getLocalizedName(Player player, Biome biome) {
+        return getLocalizedName(player.getLocale(), biome);
     }
 
 }

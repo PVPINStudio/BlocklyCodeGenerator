@@ -1,6 +1,5 @@
 package com.pvpin.blockly;
 
-import com.pvpin.pvpincore.api.PVPINLogManager;
 import com.pvpin.translation.PVPINTranslation;
 import org.bukkit.potion.PotionEffectType;
 
@@ -22,7 +21,11 @@ public class PotionEffectTypeGenerator {
             PotionEffectType type = it.next();
             sb.append("[");
             sb.append("\"");
-            sb.append(PVPINTranslation.getLocalizedName("zh_cn", type));
+            try {
+                sb.append(PVPINTranslation.getLocalizedName("zh_cn", type));
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
             sb.append("\"");
             sb.append(", ");
             sb.append("\"");
@@ -39,7 +42,7 @@ public class PotionEffectTypeGenerator {
             try {
                 file.createNewFile();
             } catch (IOException ex) {
-                PVPINLogManager.log(ex);
+                ex.printStackTrace();
             }
         }
         try {
@@ -48,7 +51,7 @@ public class PotionEffectTypeGenerator {
             writer.flush();
             writer.close();
         } catch (IOException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
     }
 }

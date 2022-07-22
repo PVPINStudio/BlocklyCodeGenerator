@@ -32,12 +32,12 @@ import com.pvpin.pvpincore.modules.boot.PVPINLoadOnEnable;
 import com.pvpin.pvpincore.modules.PVPINCore;
 import com.pvpin.pvpincore.impl.nms.VersionChecker;
 
-import static com.pvpin.pvpincore.impl.nms.VersionChecker.version;
-
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Properties;
+
+import static com.pvpin.pvpincore.impl.nms.VersionChecker.version;
 
 /**
  * @author William_Shi
@@ -110,7 +110,7 @@ public class TranslationManager {
      * @param key translation key
      * @return simplified Chinese name
      */
-    protected static String getZH_CNName(String key) {
+    public static String getZH_CNName(String key) {
         return zhcn.get(key);
     }
 
@@ -118,7 +118,7 @@ public class TranslationManager {
      * @param key translation key
      * @return traditional Chinese name
      */
-    protected static String getZH_TWName(String key) {
+    public static String getZH_TWName(String key) {
         return zhtw.get(key);
     }
 
@@ -126,7 +126,7 @@ public class TranslationManager {
      * @param key translation key
      * @return English (US) name
      */
-    protected static String getEN_USName(String key) {
+    public static String getEN_USName(String key) {
         return enus.get(key);
     }
 

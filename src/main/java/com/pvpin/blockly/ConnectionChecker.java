@@ -1,6 +1,5 @@
 package com.pvpin.blockly;
 
-import com.pvpin.pvpincore.api.PVPINLogManager;
 import org.bukkit.Bukkit;
 import io.github.classgraph.ClassGraph;
 
@@ -51,7 +50,7 @@ public class ConnectionChecker {
             try {
                 file.createNewFile();
             } catch (IOException ex) {
-                PVPINLogManager.log(ex);
+                ex.printStackTrace();
             }
         }
         try {
@@ -60,7 +59,7 @@ public class ConnectionChecker {
             writer.flush();
             writer.close();
         } catch (IOException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
     }
 }

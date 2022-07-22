@@ -22,23 +22,20 @@
  */
 package com.pvpin.translation;
 
-import static com.pvpin.translation.TranslationManager.*;
-
 import com.pvpin.pvpincore.impl.nms.NMSUtils;
-import com.pvpin.pvpincore.api.PVPINLogManager;
-
-import static com.pvpin.pvpincore.impl.nms.VersionChecker.version;
+import com.pvpin.pvpincore.modules.boot.PVPINLoadOnEnable;
+import com.pvpin.pvpincore.impl.nms.VersionChecker;
+import net.md_5.bungee.api.chat.TranslatableComponent;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionEffectTypeWrapper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.Arrays;
 
-import com.pvpin.pvpincore.modules.boot.PVPINLoadOnEnable;
-import com.pvpin.pvpincore.impl.nms.VersionChecker;
-import net.md_5.bungee.api.chat.TranslatableComponent;
-import org.bukkit.potion.PotionEffectType;
-import org.bukkit.potion.PotionEffectTypeWrapper;
+import static com.pvpin.translation.TranslationManager.*;
+import static com.pvpin.pvpincore.impl.nms.VersionChecker.version;
 
 /**
  * @author William_Shi
@@ -87,7 +84,6 @@ public class TranslationPotionEffectType {
 /**
  * @author William_Shi
  */
-@PVPINLoadOnEnable
 class PotionTypeTranslationNMSUtils extends NMSUtils {
 
     protected static Class<?> nmsMobEffectList;
@@ -111,7 +107,7 @@ class PotionTypeTranslationNMSUtils extends NMSUtils {
                                     try {
                                         nmsIRegistry_MobEffectList = action.get(null);
                                     } catch (IllegalAccessException ex) {
-                                        PVPINLogManager.log(ex);
+                                        ex.printStackTrace();
                                     }
                                 }
                             }
@@ -121,7 +117,7 @@ class PotionTypeTranslationNMSUtils extends NMSUtils {
         } catch (ClassNotFoundException
                 | NoSuchMethodException
                 | SecurityException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
     }
 
@@ -138,7 +134,7 @@ class PotionTypeTranslationNMSUtils extends NMSUtils {
         } catch (IllegalAccessException
                 | IllegalArgumentException
                 | InvocationTargetException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
         return ret;
     }

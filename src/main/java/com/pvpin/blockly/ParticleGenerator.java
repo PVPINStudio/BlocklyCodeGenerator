@@ -1,8 +1,6 @@
 package com.pvpin.blockly;
 
-import com.pvpin.pvpincore.api.PVPINLogManager;
 import org.bukkit.Particle;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -38,7 +36,7 @@ public class ParticleGenerator {
             try {
                 file.createNewFile();
             } catch (IOException ex) {
-                PVPINLogManager.log(ex);
+                ex.printStackTrace();
             }
         }
         try {
@@ -47,7 +45,7 @@ public class ParticleGenerator {
             writer.flush();
             writer.close();
         } catch (IOException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
     }
 }

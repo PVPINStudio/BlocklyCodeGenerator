@@ -1,8 +1,6 @@
 package com.pvpin.blockly;
 
-import com.pvpin.pvpincore.api.PVPINLogManager;
 import org.bukkit.TreeType;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -38,7 +36,7 @@ public class TreeTypeGenerator {
             try {
                 file.createNewFile();
             } catch (IOException ex) {
-                PVPINLogManager.log(ex);
+                ex.printStackTrace();
             }
         }
         try {
@@ -47,7 +45,7 @@ public class TreeTypeGenerator {
             writer.flush();
             writer.close();
         } catch (IOException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
     }
 }

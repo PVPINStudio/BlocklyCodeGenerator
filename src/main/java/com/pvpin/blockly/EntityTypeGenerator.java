@@ -1,6 +1,5 @@
 package com.pvpin.blockly;
 
-import com.pvpin.pvpincore.api.PVPINLogManager;
 import com.pvpin.translation.PVPINTranslation;
 import org.bukkit.entity.EntityType;
 
@@ -45,7 +44,7 @@ public class EntityTypeGenerator {
             try {
                 file.createNewFile();
             } catch (IOException ex) {
-                PVPINLogManager.log(ex);
+                ex.printStackTrace();
             }
         }
         try {
@@ -54,7 +53,7 @@ public class EntityTypeGenerator {
             writer.flush();
             writer.close();
         } catch (IOException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
     }
 }

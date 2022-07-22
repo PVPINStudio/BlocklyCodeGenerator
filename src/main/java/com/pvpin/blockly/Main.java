@@ -1,6 +1,5 @@
 package com.pvpin.blockly;
 
-import com.pvpin.pvpincore.api.PVPINLogManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -13,6 +12,7 @@ public class Main extends JavaPlugin {
         try {
             this.getDataFolder().mkdirs();
             Class.forName(ConnectionChecker.class.getName());
+            Class.forName(BiomeGenerator.class.getName());
             Class.forName(EnchantmentGenerator.class.getName());
             Class.forName(EntityTypeGenerator.class.getName());
             Class.forName(MaterialGenerator.class.getName());
@@ -21,7 +21,7 @@ public class Main extends JavaPlugin {
             Class.forName(SoundGenerator.class.getName());
             Class.forName(TreeTypeGenerator.class.getName());
         } catch (ClassNotFoundException ex) {
-            PVPINLogManager.log(ex);
+            ex.printStackTrace();
         }
     }
 

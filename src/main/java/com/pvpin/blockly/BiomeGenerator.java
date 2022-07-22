@@ -1,7 +1,7 @@
 package com.pvpin.blockly;
 
 import com.pvpin.translation.PVPINTranslation;
-import org.bukkit.Sound;
+import org.bukkit.block.Biome;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,20 +12,20 @@ import java.util.Iterator;
 /**
  * @author William_Shi
  */
-public class SoundGenerator {
+public class BiomeGenerator {
     static {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
-        Iterator<Sound> it = Arrays.stream(Sound.values()).iterator();
+        Iterator<Biome> it = Arrays.stream(Biome.values()).iterator();
         while (it.hasNext()) {
-            Sound sound = it.next();
+            Biome biome = it.next();
             sb.append("[");
             sb.append("\"");
-            sb.append(PVPINTranslation.getLocalizedName("zh_cn", sound) == null ? sound.toString() : PVPINTranslation.getLocalizedName("zh_cn", sound));
+            sb.append(PVPINTranslation.getLocalizedName("zh_cn", biome) == null ? biome.toString() : PVPINTranslation.getLocalizedName("zh_cn", biome));
             sb.append("\"");
             sb.append(", ");
             sb.append("\"");
-            sb.append(sound.toString());
+            sb.append(biome.toString());
             sb.append("\"");
             sb.append("]");
             if (it.hasNext()) {
@@ -33,7 +33,7 @@ public class SoundGenerator {
             }
         }
         sb.append("]");
-        File file = new File(Main.getProvidingPlugin(Main.class).getDataFolder(), "Sound.txt");
+        File file = new File(Main.getProvidingPlugin(Main.class).getDataFolder(), "Biome.txt");
         if (!file.exists()) {
             try {
                 file.createNewFile();
